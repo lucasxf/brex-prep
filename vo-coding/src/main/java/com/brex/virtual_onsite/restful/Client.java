@@ -1,17 +1,17 @@
 package com.brex.virtual_onsite.restful;
 
+import com.brex.virtual_onsite.model.BrexTestWrapper;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
-import com.brex.virtual_onsite.model.BrexTestWrapper;
-import com.fasterxml.jackson.databind.*;
-
 public class Client {
 
-    private final ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper mapper = setupMapper();
 
     public void performRequest() {
         try {
@@ -27,9 +27,13 @@ public class Client {
         }
     }
 
-    private static HttpResponse<String> getResponse(HttpRequest request) throws IOException, InterruptedException {
+    private HttpResponse<String> getResponse(HttpRequest request) throws IOException, InterruptedException {
         return HttpClient.newBuilder()
                 .build().send(request, HttpResponse.BodyHandlers.ofString());
+    }
+
+    private ObjectMapper setupMapper() {
+        return new ObjectMapper().findAndRegisterModules();
     }
 
     private HttpRequest setupRequest() {

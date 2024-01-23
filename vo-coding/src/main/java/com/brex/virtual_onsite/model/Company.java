@@ -2,13 +2,16 @@ package com.brex.virtual_onsite.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.time.LocalDateTime;
+
 public class Company {
 
     @JsonProperty("company")
     private String name;
 
     @JsonProperty("created_at")
-    private String foundationDate;
+    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ssX")
+    private LocalDateTime foundationDate;
 
     @JsonProperty("name")
     private String founderName;
@@ -21,11 +24,11 @@ public class Company {
         this.name = name;
     }
 
-    public String getFoundationDate() {
+    public LocalDateTime getFoundationDate() {
         return foundationDate;
     }
 
-    public void setFoundationDate(String foundationDate) {
+    public void setFoundationDate(LocalDateTime foundationDate) {
         this.foundationDate = foundationDate;
     }
 
