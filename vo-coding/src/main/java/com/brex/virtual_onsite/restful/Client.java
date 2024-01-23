@@ -11,6 +11,7 @@ import java.net.http.HttpResponse;
 
 public class Client {
 
+    private static final String BREX_TEXT_URL = "https://platform.brexapis.com/interview/test";
     private final ObjectMapper mapper = setupMapper();
 
     public void performRequest() {
@@ -41,7 +42,7 @@ public class Client {
     }
 
     private HttpRequest setupRequest(String url) {
-        final String requestUrl = url == null ? "https://platform.brexapis.com/interview/test" : url;
+        final String requestUrl = (url == null) ? BREX_TEXT_URL : url;
         final URI brexUri = URI.create(requestUrl);
         return HttpRequest.newBuilder()
                 .uri(brexUri)

@@ -48,4 +48,5 @@ public class Company {
                 ", founderName='" + founderName + '\'' +
                 '}';
     }
+
 }
