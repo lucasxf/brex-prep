@@ -1,7 +1,7 @@
 package com.brex.virtual_onsite;
 
 
-import com.brex.virtual_onsite.restful.Client;
+import com.brex.virtual_onsite.restf.Client;
 
 /**
  * Preparation material:
@@ -46,8 +46,8 @@ import com.brex.virtual_onsite.restful.Client;
  *
  * Java Libraries:
  *
- * Gson for JSON parsing
- * OkHttp for requests
+ * Gson for JSON parsing // I went with Jackson
+ * OkHttp for requests // LXF: I went with native Java 11 HttpClientApi
  * DateTimeFormatter for date parsing
  */
 public class Main {

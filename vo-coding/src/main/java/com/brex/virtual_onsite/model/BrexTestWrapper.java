@@ -21,7 +21,7 @@ public class BrexTestWrapper {
 
     @Override
     public String toString() {
-        return "BrexTestWrapper{" +
+        return "{" +
                 "data=" + companies +
                 '}';
     }
