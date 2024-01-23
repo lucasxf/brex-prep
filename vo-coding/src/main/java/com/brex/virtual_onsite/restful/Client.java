@@ -41,6 +41,7 @@ public class Client {
         final URI brexUri = URI.create(requestUrl);
         return HttpRequest.newBuilder()
                 .uri(brexUri)
+                .header("Accept", "application/json")
                 .GET()
                 .build();
     }

@@ -37,4 +37,12 @@ public class Company {
         this.founderName = founderName;
     }
 
+    @Override
+    public String toString() {
+        return "Company{" +
+                "name='" + name + '\'' +
+                ", foundationDate='" + foundationDate + '\'' +
+                ", founderName='" + founderName + '\'' +
+                '}';
+    }
 }
