@@ -3,6 +3,7 @@ package com.brex.virtual_onsite.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 public class Company {
 
@@ -15,6 +16,8 @@ public class Company {
 
     @JsonProperty("name")
     private String founderName;
+
+    private ZonedDateTime zonedFoundationDate;
 
     public String getName() {
         return name;
@@ -38,6 +41,14 @@ public class Company {
 
     public void setFounderName(String founderName) {
         this.founderName = founderName;
+    }
+
+    public ZonedDateTime getZonedFoundationDate() {
+        return zonedFoundationDate;
+    }
+
+    public void setZonedFoundationDate(ZonedDateTime zonedFoundationDate) {
+        this.zonedFoundationDate = zonedFoundationDate;
     }
 
     @Override

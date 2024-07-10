@@ -1,23 +1,32 @@
 package com.brex.virtual_onsite;
 
 
-import com.brex.virtual_onsite.restf.Client;
+import com.brex.virtual_onsite.model.Company;
+import com.brex.virtual_onsite.rest.Client;
+import com.brex.virtual_onsite.service.CompanyService;
+import com.brex.virtual_onsite.service.impl.CompanyServiceFactory;
+
+import java.util.List;
 
 /**
  * Preparation material:
  *
  * Coding Interview (60 min):
  *
- * In preparation for this interview we recommend preparing and understanding how to do the following in your programming language of choice
+ * In preparation for this interview we recommend preparing and understanding how to do the following in your
+ * programming language of choice
  * 1. Making HTTP Requests to a RESTful JSON API
  * 2. Parsing and handling JSON responses
  * 3. Parsing ISO8601 datetime strings
- * You can do this part of the interview in your own IDE/text editor if you like and come with some prepared code around the above processes.
+ * You can do this part of the interview in your own IDE/text editor if you like and come with some prepared code
+ * around the above processes.
  * You can prepare small code snippets and libraries, but you should not use complete frameworks (e.g., Spring Boot).
  * Review how to model data structures.
  * Practice explaining your thought process before starting a coding question.
  * THINK OUT LOUD, it is crucial to maintain active communication throughout the entire interview.
- * We have the following test endpoint you can use to test you are able to successfully make requests to our API and practice parsing JSON responses with ISO8601 datetime strings https://platform.brexapis.com/interview/test curl --request GET \
+ * We have the following test endpoint you can use to test you are able to successfully make requests to our API and
+ * practice parsing JSON responses with ISO8601 datetime strings
+ * https://platform.brexapis.com/interview/test curl --request GET \
  *   --url https://platform.brexapis.com/interview/test \
  *   --header ‘Accept: application/json’
  *
@@ -26,7 +35,8 @@ import com.brex.virtual_onsite.restf.Client;
  *
  *
  *
- * For Java candidates, the following libraries are available in codesignal. However you can setup your own project locally with additional libraries if you prefer
+ * For Java candidates, the following libraries are available in codesignal. However you can setup your own project
+ * locally with additional libraries if you prefer
  *
  * 1  import java.io.*;
  * 2  import java.math.*;
@@ -53,8 +63,8 @@ import com.brex.virtual_onsite.restf.Client;
 public class Main {
 
     public static void main(String[] args) {
-        Client c = new Client();
-        c.performRequest();
+        CompanyService service = CompanyServiceFactory.build();
+        List<Company> companies = service.getCompanies();
     }
 
 }

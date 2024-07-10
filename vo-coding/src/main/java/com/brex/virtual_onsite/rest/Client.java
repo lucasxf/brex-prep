@@ -1,4 +1,4 @@
-package com.brex.virtual_onsite.restf;
+package com.brex.virtual_onsite.rest;
 
 import com.brex.virtual_onsite.model.BrexTestWrapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -15,18 +15,21 @@ import java.net.http.HttpResponse;
  */
 public class Client {
 
-    private static final String BREX_TEXT_URL = "https://platform.brexapis.com/interview/test";
+    private static final String BREX_TEST_URL = "https://platform.brexapis.com/interview/test";
+    private static final String ACCEPT = "Accept";
+    private static final String CONTENT_TYPE = "application/json";
+
     private final ObjectMapper mapper = setupMapper();
 
-    public void performRequest() {
+    public BrexTestWrapper performRequest() {
         try {
             final HttpRequest request = setupRequest();
             final HttpResponse<String> response = getResponse(request);
             if (response.body() != null) {
-                BrexTestWrapper value = parseResponse(response);
-                System.out.println("Response: " + value);
+                return parseResponse(response);
             } else {
                 System.out.println("Empty response body");
+                return null;
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -42,11 +45,11 @@ public class Client {
     }
 
     private HttpRequest setupRequest(String url) {
-        final String requestUrl = (url == null) ? BREX_TEXT_URL : url;
+        final String requestUrl = (url == null) ? BREX_TEST_URL : url;
         final URI brexUri = URI.create(requestUrl);
         return HttpRequest.newBuilder()
                 .uri(brexUri)
-                .header("Accept", "application/json")
+                .header(ACCEPT, CONTENT_TYPE)
                 .GET()
                 .build();
     }
